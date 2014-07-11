@@ -37,6 +37,6 @@ class FakeNode < Hash
     self['name']
   end
   def run_list
-    self['run_list']
+    self['run_list'].join(', ')
   end
 end
