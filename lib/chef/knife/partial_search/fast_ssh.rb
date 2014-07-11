@@ -11,7 +11,7 @@ class Chef
         end
       end
 
-      alias_method :classic_configure_session, :configure_session
+      alias_method :classic_configure_session, :configure_session unless method_defined? :classic_configure_session
 
       def configure_session
         if defined?(Chef::PartialSearch)

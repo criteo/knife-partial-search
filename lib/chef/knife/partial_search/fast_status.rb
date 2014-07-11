@@ -11,7 +11,7 @@ class Chef
         end
       end
 
-      alias_method :classic_run, :run
+      alias_method :classic_run, :run unless method_defined? :classic_run
 
       def run
         if defined?(Chef::PartialSearch)

@@ -6,7 +6,8 @@ class Chef
 
           @@keys = keys
 
-          alias_method :old_search, :search
+          alias_method :old_search, :search unless method_defined? :old_search
+
           def search(type, query, args={}, &block)
             q = Chef::PartialSearch.new
             args[:keys] = @@keys
