@@ -31,12 +31,3 @@ class Chef
     end
   end
 end
-
-class FakeNode < Hash
-  def name
-    self['name']
-  end
-  def run_list
-    self['run_list'].join(', ')
-  end
-end
