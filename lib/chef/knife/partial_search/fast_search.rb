@@ -1,0 +1,69 @@
+class Chef
+  class Knife
+    class Search
+
+      include Chef::Knife::PartialSearch
+
+      deps do
+        begin
+          require 'partial_search'
+        rescue LoadError => e
+        end
+      end
+
+      alias_method :classic_run, :run unless method_defined? :classic_run
+
+      def run
+        if defined?(Chef::PartialSearch)
+          keys = {}
+          if config[:attribute]
+            keys['name'] = ['name']
+            Array(config[:attribute]).each do |nested_value_spec|
+              keys[nested_value_spec] = nested_value_spec.split('.')
+            end
+            define_partial_search(keys)
+          else
+            define_partial_search({
+              'name'      => ['name'],
+              'chef_environment' => ['chef_environment'],
+              'fqdn'      => ['fqdn'],
+              'ipaddress' => ['ipaddress'],
+              'run_list'  => ['run_list'],
+              'roles'     => ['roles'],
+              'recipes'   => ['recipes'],
+              'platform'  => ['platform'],
+              'tags'      => ['tags'],
+              'platform_version' => ['platform_version'],
+            })
+          end
+        end
+        classic_run
+      end
+
+    end
+  end
+end
+
+class FakeNode < Hash
+  def name
+    self['name']
+  end
+  def chef_environment
+    self['chef_environment']
+  end
+  def run_list
+    self['run_list'].join(', ')
+  end
+
+  def [](key)
+    super(key.to_s)
+  end
+
+  def kind_of?(klass)
+    if klass.to_s == 'Chef::Node'
+      true
+    else
+      super
+    end
+  end
+end
