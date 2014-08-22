@@ -1,3 +1,4 @@
+require_relative 'partial_search/fake_node.rb'
 require_relative 'partial_search/partial_search.rb'
 require_relative 'partial_search/fast_status.rb'
 require_relative 'partial_search/fast_ssh.rb'

@@ -17,7 +17,7 @@ class Chef
             args[:rows] = rows
             if block_given?
               q.search(type, query, args) do |node_hash|
-                n = FakeNode.new do |h,k|
+                n = Chef::Knife::PartialSearch::FakeNode.new do |h,k|
                   h[k] = node_hash[k]
                 end
                 @@keys.each do |k,v| n[k] end
@@ -43,7 +43,7 @@ class Chef
         alias_method :old_extract, :extract_nested_value unless method_defined? :old_extract
 
         def extract_nested_value(data, nested_value_spec)
-          if data.kind_of?(FakeNode)
+          if data.kind_of?(Chef::Knife::PartialSearch::FakeNode)
             data[nested_value_spec]
           else
             old_extract(data, nested_value_spec)
