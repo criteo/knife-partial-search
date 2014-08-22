@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Gregoire Seux"]
   spec.email         = ["g.seux@criteo.com"]
   spec.summary       = "Improve usual knife commands thanks to partial-search"
-  spec.homepage      = "https://gitlab.criteois.lan/ruby-gems/knife-partial-search"
+  spec.homepage      = "https://github.com/criteo/knife-partial-search"
   spec.license       = "Apache 2.0"
 
   spec.files         = `git ls-files`.split($/)
