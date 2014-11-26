@@ -6,4 +6,5 @@ deploy:
   gem: knife-partial-search
   on:
     tags: true
+    all_branches: true # See https://github.com/travis-ci/travis-ci/issues/1675
     repo: criteo/knife-partial-search

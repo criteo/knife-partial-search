@@ -1,5 +1,5 @@
 module Knife
-  module PartialSearch
-      VERSION = "0.0.3"
+  class PartialSearch
+    VERSION = '0.0.4'
   end
 end
