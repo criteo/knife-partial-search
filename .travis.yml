@@ -1,0 +1,9 @@
+language: ruby
+deploy:
+  provider: rubygems
+  api_key:
+    secure: A5tQX0QcsgGg5hqVahk4DQ3phoXGWQOs5Iv61SR0tIFw97+hm3oEAlWW1rIQjx2axLyBVLOeUDSWKnNm/taG5gdj5sHTbQH2X5aEQJ0qGZOGb5tdh8br4qWyEq94afGwDCI7eY3qEcMTmiTCyCz2dy5DoL4QkjUaEW7KehYu6Xw=
+  gem: knife-partial-search
+  on:
+    tags: true
+    repo: criteo/knife-partial-search
